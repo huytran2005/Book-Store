@@ -8,6 +8,7 @@ import { Book, Category } from '@/types';
 import Loading from '@/components/Loading';
 import BookCard from '@/components/BookCard';
 import Book3DCard from '@/components/Book3DCard';
+import Hero3DBook from '@/components/Hero3DBook';
 
 export default function HomePage() {
   const [books, setBooks] = useState<Book[]>([]);
@@ -78,7 +79,7 @@ export default function HomePage() {
                 href="/onboarding"
                 className="bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-stone-950 font-black px-8 py-4 rounded-xl transition-all shadow-lg shadow-amber-500/10 text-center scale-100 active:scale-95"
               >
-                Trải nghiệm Gu Sách 🎯
+                Trải nghiệm Gu Sách
               </Link>
               <Link
                 href="/books"
@@ -89,14 +90,14 @@ export default function HomePage() {
             </div>
           </div>
 
-          {/* Right Column: Interactive 3D Showcase */}
+          {/* Right Column: Interactive Standalone 3D Book Showcase */}
           {topBestSeller && (
             <div className="lg:col-span-5 flex justify-center items-center select-none pt-6 lg:pt-0">
-              <div className="flex flex-col items-center gap-4 bg-white/5 backdrop-blur-xl border border-white/10 p-6 rounded-3xl shadow-2xl relative group">
+              <div className="flex flex-col items-center gap-4 bg-white/5 backdrop-blur-xl border border-white/10 p-12 rounded-[2.5rem] shadow-2xl relative group min-w-[280px]">
                 <div className="absolute -top-3 -right-3 bg-amber-500 text-stone-950 text-[10px] font-black uppercase tracking-widest px-3.5 py-1 rounded-full shadow-lg">
                   Tác phẩm nổi bật
                 </div>
-                <Book3DCard book={topBestSeller} />
+                <Hero3DBook book={topBestSeller} />
               </div>
             </div>
           )}

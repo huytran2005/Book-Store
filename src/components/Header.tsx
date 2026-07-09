@@ -48,7 +48,7 @@ export const Header: React.FC = () => {
                 href="/onboarding" 
                 className={`hover:text-amber-600 transition-colors ${pathname === '/onboarding' ? 'text-amber-600' : ''}`}
               >
-                Chọn Gu Sách 🎯
+                Chọn Gu Sách
               </Link>
               <Link 
                 href="/books" 
@@ -195,7 +195,7 @@ export const Header: React.FC = () => {
                 onClick={() => setIsMobileMenuOpen(false)}
                 className={`py-2 px-3 rounded-lg hover:bg-slate-50 ${pathname === '/onboarding' ? 'text-amber-600 bg-amber-50/50' : ''}`}
               >
-                Chọn Gu Sách 🎯
+                Chọn Gu Sách
               </Link>
               <Link 
                 href="/books" 
