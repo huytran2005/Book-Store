@@ -106,7 +106,6 @@ export const bookService = {
   },
 
   async getAllBooks(): Promise<Book[]> {
-    await this.seedInitialData();
     return (await firestoreService.getAll(BOOKS_COLLECTION)) as Book[];
   },
 
@@ -135,7 +134,6 @@ export const bookService = {
   },
 
   async getAllCategories(): Promise<Category[]> {
-    await this.seedInitialData();
     return (await firestoreService.getAll(CATEGORIES_COLLECTION)) as Category[];
   },
 
