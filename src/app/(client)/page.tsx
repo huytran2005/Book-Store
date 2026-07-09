@@ -92,12 +92,15 @@ export default function HomePage() {
 
           {/* Right Column: Interactive Standalone 3D Book Showcase */}
           {topBestSeller && (
-            <div className="lg:col-span-5 flex justify-center items-center select-none pt-6 lg:pt-0">
-              <div className="flex flex-col items-center gap-4 bg-white/5 backdrop-blur-xl border border-white/10 p-12 rounded-[2.5rem] shadow-2xl relative group min-w-[280px]">
-                <div className="absolute -top-3 -right-3 bg-amber-500 text-stone-950 text-[10px] font-black uppercase tracking-widest px-3.5 py-1 rounded-full shadow-lg">
-                  Tác phẩm nổi bật
-                </div>
+            <div className="lg:col-span-5 flex justify-center items-center select-none pt-6 lg:pt-0 relative">
+              {/* Cinematic golden ambient glow behind the book */}
+              <div className="absolute w-72 h-72 rounded-full bg-amber-500/10 blur-[80px] pointer-events-none" />
+              
+              <div className="relative flex flex-col items-center gap-6">
                 <Hero3DBook book={topBestSeller} />
+                <span className="text-[10px] font-black uppercase tracking-[0.2em] text-amber-500/80 bg-amber-500/10 px-3.5 py-1.5 rounded-full border border-amber-500/15 shadow-sm">
+                  Tác phẩm nổi bật
+                </span>
               </div>
             </div>
           )}
