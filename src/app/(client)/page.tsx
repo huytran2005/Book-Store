@@ -66,10 +66,10 @@ export default function HomePage() {
                 Mua sách ngay
               </Link>
               <Link
-                href="#categories"
+                href="/onboarding"
                 className="bg-white/10 hover:bg-white/15 border border-white/20 text-white font-semibold px-8 py-3.5 rounded-xl transition-all text-center"
               >
-                Xem danh mục
+                Trải nghiệm Gu Sách 🎯
               </Link>
             </div>
           </div>

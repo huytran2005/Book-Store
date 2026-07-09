@@ -45,6 +45,12 @@ export const Header: React.FC = () => {
                 Trang chủ
               </Link>
               <Link 
+                href="/onboarding" 
+                className={`hover:text-amber-600 transition-colors ${pathname === '/onboarding' ? 'text-amber-600' : ''}`}
+              >
+                Chọn Gu Sách 🎯
+              </Link>
+              <Link 
                 href="/books" 
                 className={`hover:text-amber-600 transition-colors ${pathname === '/books' ? 'text-amber-600' : ''}`}
               >
@@ -183,6 +189,13 @@ export const Header: React.FC = () => {
                 className={`py-2 px-3 rounded-lg hover:bg-slate-50 ${pathname === '/' ? 'text-amber-600 bg-amber-50/50' : ''}`}
               >
                 Trang chủ
+              </Link>
+              <Link 
+                href="/onboarding" 
+                onClick={() => setIsMobileMenuOpen(false)}
+                className={`py-2 px-3 rounded-lg hover:bg-slate-50 ${pathname === '/onboarding' ? 'text-amber-600 bg-amber-50/50' : ''}`}
+              >
+                Chọn Gu Sách 🎯
               </Link>
               <Link 
                 href="/books" 
