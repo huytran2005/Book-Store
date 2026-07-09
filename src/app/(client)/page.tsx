@@ -92,15 +92,27 @@ export default function HomePage() {
 
           {/* Right Column: Interactive Standalone 3D Book Showcase */}
           {topBestSeller && (
-            <div className="lg:col-span-5 flex justify-center items-center select-none pt-6 lg:pt-0 relative">
+            <div className="lg:col-span-5 flex flex-col justify-center items-center select-none pt-6 lg:pt-0 relative">
               {/* Subtle ambient glow behind the book */}
               <div className="absolute w-72 h-72 rounded-full bg-amber-500/5 blur-[80px] pointer-events-none" />
               
-              <div className="relative flex flex-col items-center gap-6">
+              <div className="relative flex flex-col items-center gap-4 text-center">
                 <Hero3DBook book={topBestSeller} />
-                <span className="text-[10px] font-black uppercase tracking-[0.2em] text-amber-800 bg-amber-500/10 px-3.5 py-1.5 rounded-full border border-amber-500/15 shadow-sm">
-                  Tác phẩm nổi bật
-                </span>
+                
+                <div className="flex flex-col items-center gap-1.5 mt-2">
+                  <span className="text-[9px] font-black uppercase tracking-[0.2em] text-amber-800 bg-amber-500/10 px-3 py-1 rounded-full border border-amber-500/15">
+                    Tác phẩm nổi bật
+                  </span>
+                  <h3 className="font-extrabold text-stone-900 text-lg mt-1 line-clamp-1 max-w-[250px]">{topBestSeller.title}</h3>
+                  <p className="text-stone-400 text-xs font-bold">{topBestSeller.author}</p>
+                  <p className="text-amber-700 font-extrabold text-sm mt-0.5">{topBestSeller.price.toLocaleString('vi-VN')} đ</p>
+                  <Link 
+                    href={`/books/${topBestSeller.id}`}
+                    className="inline-flex items-center gap-1 text-xs font-black text-stone-900 hover:text-amber-600 transition-colors mt-2 border-b-2 border-stone-900 hover:border-amber-600 pb-0.5"
+                  >
+                    Xem chi tiết <ArrowRight size={12} />
+                  </Link>
+                </div>
               </div>
             </div>
           )}
