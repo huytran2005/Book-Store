@@ -1,5 +1,5 @@
 import { initializeApp } from 'firebase/app';
-import { getFirestore, doc, writeBatch, setDoc } from 'firebase/firestore';
+import { getFirestore, doc, writeBatch, setDoc, collection, getDocs } from 'firebase/firestore';
 import * as fs from 'fs';
 import * as path from 'path';
 
@@ -45,6 +45,44 @@ async function importBooks() {
     console.error('books.json not found! Please run the crawl script first.');
     process.exit(1);
   }
+
+  // 0. Clean up existing data first
+  console.log('\nCleaning up old/messy books and categories in Firestore...');
+  try {
+    const booksSnapshot = await getDocs(collection(db, 'books'));
+    if (booksSnapshot.size > 0) {
+      console.log(`Found ${booksSnapshot.size} old books. Deleting...`);
+      let deleteBatch = writeBatch(db);
+      let deleteCount = 0;
+      for (const docSnapshot of booksSnapshot.docs) {
+        deleteBatch.delete(docSnapshot.ref);
+        deleteCount++;
+        if (deleteCount >= 400) {
+          await deleteBatch.commit();
+          deleteBatch = writeBatch(db);
+          deleteCount = 0;
+        }
+      }
+      if (deleteCount > 0) {
+        await deleteBatch.commit();
+      }
+      console.log('Deleted old books successfully.');
+    }
+
+    const categoriesSnapshot = await getDocs(collection(db, 'categories'));
+    if (categoriesSnapshot.size > 0) {
+      console.log(`Found ${categoriesSnapshot.size} old categories. Deleting...`);
+      const catDeleteBatch = writeBatch(db);
+      categoriesSnapshot.docs.forEach((docSnapshot) => {
+        catDeleteBatch.delete(docSnapshot.ref);
+      });
+      await catDeleteBatch.commit();
+      console.log('Deleted old categories successfully.');
+    }
+  } catch (error) {
+    console.error('Error during database cleanup:', error);
+  }
+
   
   const booksData = JSON.parse(fs.readFileSync(booksPath, 'utf8'));
   console.log(`Loaded ${booksData.length} books from books.json.`);
