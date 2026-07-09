@@ -51,39 +51,39 @@ export default function HomePage() {
   return (
     <div className="flex flex-col gap-16 md:gap-24 pb-20 bg-[#fafaf9]">
       
-      {/* Asymmetric Hero Banner */}
-      <section className="relative bg-gradient-to-br from-stone-900 via-stone-850 to-slate-900 text-stone-100 py-20 md:py-28 px-4 sm:px-6 lg:px-8 overflow-hidden rounded-b-[2.5rem] md:rounded-b-[4.5rem] shadow-2xl">
-        <div className="absolute inset-0 opacity-5 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:20px_20px]"></div>
+      {/* Asymmetric Editorial Hero Banner */}
+      <section className="relative bg-[#fafaf9] text-stone-900 py-16 md:py-24 px-4 sm:px-6 lg:px-8 border-b border-stone-200/50">
+        <div className="absolute inset-0 opacity-[0.03] bg-[radial-gradient(#000_1px,transparent_1px)] [background-size:20px_20px] pointer-events-none"></div>
         
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
           
           {/* Left Column: Satoshi/Outfit Display Typography */}
           <div className="lg:col-span-7 flex flex-col gap-6 text-left">
-            <span className="inline-flex items-center gap-1.5 self-start bg-amber-500/10 text-amber-400 text-xs font-black px-4 py-1.5 rounded-full border border-amber-500/20 uppercase tracking-widest">
-              <Sparkles size={13} className="animate-pulse" /> Không gian tri thức nghệ thuật
+            <span className="inline-flex items-center gap-1.5 self-start bg-amber-500/10 text-amber-800 text-[11px] font-black px-4 py-1.5 rounded-full border border-amber-500/20 uppercase tracking-widest">
+              <Sparkles size={12} className="animate-pulse text-amber-600" /> Không gian tri thức nghệ thuật
             </span>
             
-            <h1 className="text-4xl md:text-6xl font-black tracking-tight leading-[1.05] text-white">
+            <h1 className="text-4xl md:text-6xl font-black tracking-tight leading-[1.05] text-stone-900">
               Cá nhân hóa <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-amber-200">
+              <span className="text-amber-600 font-bold">
                 Thị hiếu đọc sách
               </span>
             </h1>
             
-            <p className="text-stone-300 text-base md:text-lg max-w-[45ch] leading-relaxed">
+            <p className="text-stone-500 text-base md:text-lg max-w-[45ch] leading-relaxed font-medium">
               Khám phá kho sách tinh tuyển được may đo riêng cho gu đọc của độc giả cao cấp.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 mt-2">
               <Link
                 href="/onboarding"
-                className="bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-stone-950 font-black px-8 py-4 rounded-xl transition-all shadow-lg shadow-amber-500/10 text-center scale-100 active:scale-95"
+                className="bg-stone-900 hover:bg-stone-800 text-stone-50 font-black px-8 py-4 rounded-xl transition-all shadow-md hover:shadow-lg text-center scale-100 active:scale-95"
               >
                 Trải nghiệm Gu Sách
               </Link>
               <Link
                 href="/books"
-                className="bg-white/5 hover:bg-white/10 border border-white/10 text-white font-bold px-8 py-4 rounded-xl transition-all text-center"
+                className="bg-white hover:bg-stone-100 border border-stone-200 text-stone-800 font-bold px-8 py-4 rounded-xl transition-all text-center"
               >
                 Khám phá tủ sách
               </Link>
@@ -93,12 +93,12 @@ export default function HomePage() {
           {/* Right Column: Interactive Standalone 3D Book Showcase */}
           {topBestSeller && (
             <div className="lg:col-span-5 flex justify-center items-center select-none pt-6 lg:pt-0 relative">
-              {/* Cinematic golden ambient glow behind the book */}
-              <div className="absolute w-72 h-72 rounded-full bg-amber-500/10 blur-[80px] pointer-events-none" />
+              {/* Subtle ambient glow behind the book */}
+              <div className="absolute w-72 h-72 rounded-full bg-amber-500/5 blur-[80px] pointer-events-none" />
               
               <div className="relative flex flex-col items-center gap-6">
                 <Hero3DBook book={topBestSeller} />
-                <span className="text-[10px] font-black uppercase tracking-[0.2em] text-amber-500/80 bg-amber-500/10 px-3.5 py-1.5 rounded-full border border-amber-500/15 shadow-sm">
+                <span className="text-[10px] font-black uppercase tracking-[0.2em] text-amber-800 bg-amber-500/10 px-3.5 py-1.5 rounded-full border border-amber-500/15 shadow-sm">
                   Tác phẩm nổi bật
                 </span>
               </div>
