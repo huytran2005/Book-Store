@@ -93,19 +93,24 @@ export const bookService = {
     const existingCats = await firestoreService.getAll(CATEGORIES_COLLECTION);
     if (existingCats.length === 0) {
       for (const cat of defaultCategories) {
-        await firestoreService.add(CATEGORIES_COLLECTION, cat);
+        await firestoreService.set(CATEGORIES_COLLECTION, cat.slug, cat);
       }
     }
 
     const existingBooks = await firestoreService.getAll(BOOKS_COLLECTION);
     if (existingBooks.length === 0) {
       for (const book of defaultBooks) {
-        await firestoreService.add(BOOKS_COLLECTION, book);
+        const bookId = book.title.toLowerCase()
+          .replace(/[^a-z0-9\s-]/g, '')
+          .replace(/\s+/g, '-')
+          .replace(/-+/g, '-');
+        await firestoreService.set(BOOKS_COLLECTION, bookId, book);
       }
     }
   },
 
   async getAllBooks(): Promise<Book[]> {
+    await this.seedInitialData();
     return (await firestoreService.getAll(BOOKS_COLLECTION)) as Book[];
   },
 
@@ -134,6 +139,7 @@ export const bookService = {
   },
 
   async getAllCategories(): Promise<Category[]> {
+    await this.seedInitialData();
     return (await firestoreService.getAll(CATEGORIES_COLLECTION)) as Category[];
   },
 
